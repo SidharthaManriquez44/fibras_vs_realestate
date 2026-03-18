@@ -1,0 +1,9 @@
+-r requirements.txt
+
+pytest
+pytest-cov
+
+ruff
+black
+pre-commit
+sqlfluff
