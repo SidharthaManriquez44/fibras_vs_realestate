@@ -1,5 +1,5 @@
 
-## Your output must ALWAYS include:
+## The output include:
 
 | columna         | tipo     |
 | --------------- | -------- |
