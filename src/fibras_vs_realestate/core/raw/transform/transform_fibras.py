@@ -1,5 +1,8 @@
 import pandas as pd
-from fibras_vs_realestate.config.tables.columns import columns
+from fibras_vs_realestate.config.data_contracts.contracts import (
+    PRICE_CONTRACT,
+    DIVIDEND_CONTRACT
+)
 
 class FibrasTransformer:
 
@@ -14,7 +17,7 @@ class FibrasTransformer:
 
         df["source"] = "yahoo_finance"
 
-        return df[columns.price_columns]
+        return df[PRICE_CONTRACT.columns]
 
 
     @staticmethod
@@ -27,4 +30,4 @@ class FibrasTransformer:
 
         df["source"] = "yahoo_finance"
 
-        return df[columns.dividend_columns]
+        return df[DIVIDEND_CONTRACT.columns]

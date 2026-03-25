@@ -10,6 +10,7 @@ class DatasetNames:
     dividends: str = "dividends"
     domain: str = "fibras"
     logs: str = "_logs"
+    failed: str = "failed_data.json"
+    merged: str = "merged_data"
 
 DATASETS = DatasetNames()
-

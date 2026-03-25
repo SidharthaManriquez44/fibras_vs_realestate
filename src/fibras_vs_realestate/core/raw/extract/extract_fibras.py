@@ -8,10 +8,10 @@ logger = get_logger(__name__)
 
 class FibrasExtractor:
 
-    def __init__(self, tickers: list[str], start_date):
+    def __init__(self, tickers: list[str], start_date, execution_date: datetime):
         self.tickers = tickers
         self.start_date = start_date
-        self.execution_date = datetime.now()
+        self.execution_date = execution_date
 
     def extract_prices(self) -> tuple[DataFrame, list[str]]:
 
@@ -44,9 +44,21 @@ class FibrasExtractor:
 
                 all_prices.append(df)
 
-            except Exception(KeyError, FileExistsError) as e:
-                failed.append(ticker)
-                logger.warning(f"Failed extract price tickers: {failed}: {e}")
+            except Exception as e:
+                error_info = {
+                    "stage": "extract_all_prices",
+                    "error": str(e),
+                    "tickers": ticker
+                }
+                failed.append(error_info)
+                logger.warning(
+                    "Extract prices failed",
+                    extra={
+                        "error": str(e),
+                        "tickers": ticker,
+                        "failed": failed
+                    }
+                )
 
         if not all_prices:
             return pd.DataFrame(), failed
@@ -75,8 +87,21 @@ class FibrasExtractor:
                 all_divs.append(df)
 
 
-            except Exception(KeyError, FileExistsError) as e:
-                failed.append(ticker)
+            except Exception as e:
+                error_info = {
+                    "stage": "extract_all_dividends",
+                    "error": str(e),
+                    "tickers": ticker
+                }
+                failed.append(error_info)
+                logger.warning(
+                    "Extract dividends failed",
+                    extra={
+                        "error": str(e),
+                       "tickers": ticker,
+                        "failed": failed
+                    }
+                )
                 logger.warning(f"Failed extract dividends: {failed}: {e}")
 
         if not all_divs:
