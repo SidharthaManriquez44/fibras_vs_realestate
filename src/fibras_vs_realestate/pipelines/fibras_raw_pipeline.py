@@ -26,7 +26,7 @@ def run_pipeline(execution_date: datetime):
     logs = {}
     paths = get_paths()
     datalake = DataLakePathBuilder(paths)
-    saver = DataSaver(datalake)
+    saver = DataSaver(datalake, execution_date)
 
     extractor = FibrasExtractor(TICKERS.fibras, START_DATE, execution_date)
     transformer = FibrasTransformer()
@@ -64,8 +64,7 @@ def run_pipeline(execution_date: datetime):
                 layer=layer.raw,
                 domain=DATASETS.domain,
                 dataset=dataset_name,
-                df=df,
-                execution_date=execution_date
+                df=df
             )
 
 
@@ -73,9 +72,7 @@ def run_pipeline(execution_date: datetime):
             layer=layer.raw,
             domain=DATASETS.domain,
             dataset=DATASETS.logs,
-            data=logs,
-            execution_date=execution_date,
-            filename=DATASETS.failed
+            data=logs
         )
 
     except Exception as e:

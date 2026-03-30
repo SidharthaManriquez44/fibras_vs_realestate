@@ -7,32 +7,17 @@ logger = get_logger(__name__)
 
 
 class DataSaver:
-
-    def __init__(self, datalake):
+    def __init__(self, datalake, execution_date:datetime):
         self.datalake = datalake
-
-    def _build_partition_path(self, layer, domain, dataset, execution_date):
-        year = execution_date.year
-        month = execution_date.month
-
-        path = self.datalake.build_path(
-            layer=layer,
-            domain=domain,
-            dataset=dataset,
-            year=year,
-            month=month,
-        )
-
-        path.mkdir(parents=True, exist_ok=True)
-        return path, year, month
+        self.execution_date = execution_date
 
     def save_parquet(
         self,
-        layer: str,
-        domain: str,
-        dataset: str,
-        df: pd.DataFrame,
-        execution_date: datetime,
+        layer,
+        domain,
+        dataset,
+        df: pd.DataFrame
+
     ):
         if df.empty:
             logger.warning(
@@ -41,11 +26,18 @@ class DataSaver:
             )
             return
         try:
-            path, _, _ = self._build_partition_path(
-                layer, domain, dataset, execution_date
+            year = self.execution_date.year
+            month = self.execution_date.month
+            path = self.datalake.build_path(
+                layer,
+                domain,
+                dataset,
+                year,
+                month
             )
 
-            file_path = path / f"data_{execution_date.strftime('%Y%m%d_%H%M%S')}.parquet"
+            path.mkdir(parents=True, exist_ok=True)
+            file_path = path/ f"data_{ self.execution_date.strftime('%Y%m%d_%H%M%S')}.parquet"
             df.to_parquet(file_path, index=False)
 
             logger.info(
@@ -70,21 +62,24 @@ class DataSaver:
 
     def save_json(
             self,
-            layer: str,
-            domain: str,
-            dataset: str,
-            data: dict,
-            execution_date: datetime,
-            filename: str = None,
+            layer,
+            domain,
+            dataset,
+            data: dict
     ):
         try:
-            path, _, _ = self._build_partition_path(
-                layer, domain, dataset, execution_date
+            year = self.execution_date.year
+            month = self.execution_date.month
+            path = self.datalake.build_path(
+                layer,
+                domain,
+                dataset,
+                year,
+                month
             )
 
-            if not filename:
-                filename = f"data_{execution_date.strftime('%Y%m%d_%H%M%S')}.json"
-
+            path.mkdir(parents=True, exist_ok=True)
+            filename =  f"data_{self.execution_date.strftime('%Y%m%d_%H%M%S')}.json"
             file_path = path / filename
 
             with open(file_path, "w") as f:

@@ -4,5 +4,6 @@ from dataclasses import dataclass
 class Layer:
     raw: str  = "raw"
     processed: str = "processed"
+    analytics: str = "analytics"
 
 layer  =Layer()
