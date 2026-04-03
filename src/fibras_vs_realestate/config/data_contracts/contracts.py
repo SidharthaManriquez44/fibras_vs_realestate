@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 
+
 @dataclass(frozen=True)
 class DataContract:
     columns: list[str]
@@ -10,13 +11,13 @@ class DataContract:
 PRICE_CONTRACT = DataContract(
     columns=["date", "ticker", "close", "volume", "source", "extraction_date"],
     not_null=["date", "ticker", "close"],
-    unique=["date", "ticker"]
+    unique=["date", "ticker"],
 )
 
 DIVIDEND_CONTRACT = DataContract(
     columns=["date", "ticker", "dividend", "source", "extraction_date"],
     not_null=["date", "ticker", "dividend"],
-    unique=["date", "ticker"]
+    unique=["date", "ticker"],
 )
 
 MERGED_CONTRACT = DataContract(
@@ -29,15 +30,8 @@ MERGED_CONTRACT = DataContract(
         "source_x",
         "source_y",
         "extraction_date_x",
-        "extraction_date_y"
+        "extraction_date_y",
     ],
-    not_null=[
-        "date",
-        "ticker",
-        "close"
-    ],
-    unique=[
-        "date",
-        "ticker"
-    ]
+    not_null=["date", "ticker", "close"],
+    unique=["date", "ticker"],
 )
