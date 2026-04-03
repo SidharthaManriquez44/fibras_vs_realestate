@@ -8,7 +8,6 @@ def build_log(
     extract_errors: Dict[str, list] | None,
     validation_errors: Dict[str, list] | None,
 ) -> Dict[str, Any]:
-
     extract_errors = extract_errors or {}
     validation_errors = validation_errors or {}
 
