@@ -2,6 +2,7 @@ from datetime import datetime
 from fibras_vs_realestate.config.log_constructor.logs_processed_pipeline import (
     logs_processed_pipeline,
 )
+import pytest
 from tests.config.conf_data_save import DataSaver
 from fibras_vs_realestate.config.layers.layers import layer
 from fibras_vs_realestate.config.settings import DATASETS
@@ -19,6 +20,7 @@ from fibras_vs_realestate.config.logger_config import get_logger
 logger = get_logger(__name__)
 
 
+@pytest.mark.integration
 def test_run_pipeline(execution_date: datetime):
     paths = get_paths()
     datalake = DataLakePathBuilder(paths)

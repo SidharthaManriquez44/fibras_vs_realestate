@@ -1,3 +1,4 @@
+import pytest
 from fibras_vs_realestate.config.financial.tickers import TICKERS
 from fibras_vs_realestate.config.settings import START_DATE, DATASETS
 from fibras_vs_realestate.config.path.paths import get_paths
@@ -18,6 +19,7 @@ from fibras_vs_realestate.config.data_contracts.contracts import PRICE_CONTRACT,
 logger = get_logger(__name__)
 
 
+@pytest.mark.integration
 def test_run_pipeline(execution_date: datetime):
     logs = {}
     paths = get_paths()
