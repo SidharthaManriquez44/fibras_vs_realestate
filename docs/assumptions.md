@@ -4,17 +4,17 @@ The cost of a new apartment in **Mexico City (Narvarte Poniente neighborhood)** 
 
 The mortgage simulation was performed on **March 13, 2026** using the **BBVA platform**, obtaining the following conditions:
 
-- **Loan amount:** 70% – MXN 2,625,000  
-- **Minimum down payment:** MXN 1,125,000  
-- **Annual interest rate:** 10.90%  
-- **Monthly payment:** MXN 30,168  
-- **Required monthly income:** MXN 82,821  
+- **Loan amount:** 70% – MXN 2,625,000
+- **Minimum down payment:** MXN 1,125,000
+- **Annual interest rate:** 10.90%
+- **Monthly payment:** MXN 30,168
+- **Required monthly income:** MXN 82,821
 - **APR (CAT):** 13.3% (excluding VAT)
 
 These figures **do not include additional costs**, such as:
 
 - **Notary and legal fees:** approximately **8% – 15%** of the total property value.
-- **Title registration (escrituración):** between **3% and 6%** of the property value.
+- **Title registration:** between **3% and 6%** of the property value.
 - **Utility installations and service contracts**, such as:
   - Electricity (CFE)
   - Gas
@@ -31,8 +31,8 @@ To estimate rental income, we use the general rule that **monthly rent typically
 
 For this case:
 
-- **Estimated monthly rent:** MXN 18,000  
-- **Maintenance fee:** MXN 1,000  
+- **Estimated monthly rent:** MXN 18,000
+- **Maintenance fee:** MXN 1,000
 - **Total monthly income:** **MXN 19,000**
 
 ---
@@ -77,7 +77,7 @@ This approach attempts to maintain a **fair and objective comparison between rea
 
 However, it should be validated whether the correct methodology is:
 
-- investing **only the net difference**, or  
+- investing **only the net difference**, or
 - investing the **full mortgage payment amount**.
 
 ---

@@ -3,6 +3,7 @@ from fibras_vs_realestate.config.logger_config import get_logger
 
 logger = get_logger(__name__)
 
+
 def validate_data(df, contract, dataset_name: str):
     try:
         DataValidator.validate_not_empty(df)

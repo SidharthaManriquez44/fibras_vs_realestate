@@ -33,8 +33,13 @@ logs/
 *.log
 
 # Files local tests
-notebook/data/
+notebooks/
+*.ipynb
+
+data/
 *.csv
+*.parquet
+*.json
 
 # VSCode
 .vscode/

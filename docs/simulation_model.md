@@ -140,7 +140,7 @@ features = [
 "oil_price",
 "vix",
 ]
-df = pd.DataFrame(features) 
+df = pd.DataFrame(features)
 
 X = df[features]
 y = df["recession"]

@@ -1,5 +1,4 @@
 class DataLakePathBuilder:
-
     def __init__(self, paths):
         self.paths = paths
 
@@ -13,21 +12,7 @@ class DataLakePathBuilder:
         else:
             raise ValueError(f"Invalid layer: {layer}")
 
-    def build_path(
-            self,
-            layer: str,
-            domain: str,
-            dataset: str,
-            year: int,
-            month: int
-    ):
+    def build_path(self, layer: str, domain: str, dataset: str, year: int, month: int):
         base = self._get_base_path(layer)
 
-        return (
-                base
-                / domain
-                / dataset
-                / f"year={year}"
-                / f"month={month}"
-        )
-
+        return base / domain / dataset / f"year={year}" / f"month={month}"
