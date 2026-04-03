@@ -2,7 +2,7 @@ from datetime import datetime
 from fibras_vs_realestate.config.log_constructor.logs_processed_pipeline import (
     logs_processed_pipeline,
 )
-from storage.test_data_save import DataSaver
+from tests.config.conf_data_save import DataSaver
 from fibras_vs_realestate.config.layers.layers import layer
 from fibras_vs_realestate.config.settings import DATASETS
 

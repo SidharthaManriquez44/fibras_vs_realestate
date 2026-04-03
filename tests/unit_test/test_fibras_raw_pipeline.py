@@ -5,7 +5,7 @@ from datetime import datetime
 
 from fibras_vs_realestate.core.raw.extract.extract_fibras import FibrasExtractor
 from fibras_vs_realestate.core.raw.transform.transform_fibras import FibrasTransformer
-from storage.test_data_save import DataSaver
+from tests.config.conf_data_save import DataSaver
 from fibras_vs_realestate.config.path.path_builder import DataLakePathBuilder
 
 from fibras_vs_realestate.config.layers.layers import layer

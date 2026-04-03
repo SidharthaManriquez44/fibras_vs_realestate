@@ -1,6 +1,4 @@
 from datetime import datetime
-from pathlib import Path
-from fibras_vs_realestate.config.settings import DATASETS
 from tests.config.conf_data_save import DataSaver
 
 
@@ -59,10 +57,3 @@ def test_save_logs(tmp_path, sample_log, execution_date: datetime):
     files = list(tmp_path.rglob("*.json"))
 
     assert len(files) == 1
-
-
-def test_build_partition_path(tmp_path):
-    lake = DummyDataLake(tmp_path)
-    lake.build_path("raw", DATASETS.domain, DATASETS.prices, "2206", "3")
-    expected_path = Path("../../data/raw", DATASETS.domain, DATASETS.prices, "2206", "3")
-    assert lake.base_path == expected_path

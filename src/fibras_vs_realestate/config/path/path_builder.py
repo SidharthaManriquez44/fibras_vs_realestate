@@ -6,7 +6,7 @@ class DataLakePathBuilder:
         if layer == "raw":
             return self.paths.raw_dir
         elif layer == "processed":
-            return self.paths.processed_dirD
+            return self.paths.processed_dir
         elif layer == "external":
             return self.paths.external_dir
         else:
