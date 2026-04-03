@@ -1,4 +1,11 @@
+--constraint https://raw.githubusercontent.com/apache/airflow/constraints-2.9.0/constraints-3.10.txt
 
+apache-airflow==2.9.0
 yfinance
 numpy
 pandas
+requests
+s3fs
+duckdb
+
+scikit-learn

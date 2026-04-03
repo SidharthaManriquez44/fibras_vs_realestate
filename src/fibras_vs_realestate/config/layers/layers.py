@@ -1,9 +1,11 @@
 from dataclasses import dataclass
 
+
 @dataclass(frozen=True)
 class Layer:
-    raw: str  = "raw"
+    raw: str = "raw"
     processed: str = "processed"
     analytics: str = "analytics"
 
-layer  =Layer()
+
+layer = Layer()

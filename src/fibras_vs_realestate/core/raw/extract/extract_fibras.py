@@ -6,21 +6,16 @@ from fibras_vs_realestate.config.logger_config import get_logger
 
 logger = get_logger(__name__)
 
-class FibrasExtractor:
 
+class FibrasExtractor:
     def __init__(self, tickers: list[str], start_date, execution_date: datetime):
         self.tickers = tickers
         self.start_date = start_date
         self.execution_date = execution_date
 
     def extract_prices(self) -> tuple[DataFrame, list[str]]:
-
         data = yf.download(
-            self.tickers,
-            start=self.start_date,
-            auto_adjust=True,
-            group_by="ticker",
-            progress=False
+            self.tickers, start=self.start_date, auto_adjust=True, group_by="ticker", progress=False
         )
 
         all_prices = []
@@ -45,19 +40,11 @@ class FibrasExtractor:
                 all_prices.append(df)
 
             except Exception as e:
-                error_info = {
-                    "stage": "extract_all_prices",
-                    "error": str(e),
-                    "tickers": ticker
-                }
+                error_info = {"stage": "extract_all_prices", "error": str(e), "tickers": ticker}
                 failed.append(error_info)
                 logger.warning(
                     "Extract prices failed",
-                    extra={
-                        "error": str(e),
-                        "tickers": ticker,
-                        "failed": failed
-                    }
+                    extra={"error": str(e), "tickers": ticker, "failed": failed},
                 )
 
         if not all_prices:
@@ -65,9 +52,7 @@ class FibrasExtractor:
 
         return pd.concat(all_prices, ignore_index=True), failed
 
-
     def extract_dividends(self) -> tuple[DataFrame, list[str]]:
-
         all_divs = []
         failed = []
 
@@ -86,21 +71,12 @@ class FibrasExtractor:
 
                 all_divs.append(df)
 
-
             except Exception as e:
-                error_info = {
-                    "stage": "extract_all_dividends",
-                    "error": str(e),
-                    "tickers": ticker
-                }
+                error_info = {"stage": "extract_all_dividends", "error": str(e), "tickers": ticker}
                 failed.append(error_info)
                 logger.warning(
                     "Extract dividends failed",
-                    extra={
-                        "error": str(e),
-                       "tickers": ticker,
-                        "failed": failed
-                    }
+                    extra={"error": str(e), "tickers": ticker, "failed": failed},
                 )
                 logger.warning(f"Failed extract dividends: {failed}: {e}")
 
